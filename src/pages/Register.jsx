@@ -1,6 +1,6 @@
 import { useState } from "react"
 import { Layout } from "../components/Layout"
-import { useNavigate } from "react-router-dom"
+import { Link, useNavigate } from "react-router-dom"
 import { useAuth } from "../context/authContext"
 import { registerUser } from "../services/api"
 
@@ -106,7 +106,7 @@ const Register = () => {
           )}
         </button>
         <p className="auth-link">
-          ¿Ya tienes cuenta? <a href="/login">Inicia sesión aquí</a>
+          ¿Ya tienes cuenta? <Link to="/login">Inicia sesión aquí</Link>
         </p>
       </form>
     </Layout>

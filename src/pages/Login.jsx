@@ -1,7 +1,7 @@
 import { useState } from "react"
 import { Layout } from "../components/Layout"
 import { useAuth } from "../context/authContext"
-import { useNavigate, useLocation } from "react-router-dom"
+import { useNavigate, useLocation, Link } from "react-router-dom"
 import { loginUser } from "../services/api"
 
 const Login = () => {
@@ -80,7 +80,7 @@ const Login = () => {
           )}
         </button>
         <p className="auth-link">
-          ¿No tienes cuenta? <a href="/register">Regístrate aquí</a>
+          ¿No tienes cuenta? <Link to="/register">Regístrate aquí</Link>
         </p>
       </form>
     </Layout>
