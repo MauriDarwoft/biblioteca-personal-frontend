@@ -1,183 +1,145 @@
-# 📚 Mi Biblioteca Personal
+# 📚 Mi Biblioteca Personal - Frontend
 
-Una aplicación web completa para la gestión de una biblioteca personal, construida con React (Frontend) y Node.js + Express + MongoDB (Backend).
+Aplicación web para gestionar tu colección de libros, permitiéndote registrar, iniciar sesión, y llevar un control de tus libros leídos y por leer. Desarrollada con React y Vite por Mauricio Fredes.
 
 ## 🚀 Características
 
-### Frontend (React + Vite)
-- ✅ **Autenticación completa**: Registro, login y logout
-- ✅ **Rutas protegidas**: Solo usuarios autenticados pueden acceder
-- ✅ **Gestión de libros**: Agregar, editar, eliminar y cambiar estado
-- ✅ **Filtros y búsqueda**: Por estado (leído/por leer) y texto
-- ✅ **Dashboard con estadísticas**: Progreso de lectura y métricas
-- ✅ **Página de configuración**: Editar perfil y cambiar contraseña
-- ✅ **Reconocimiento de voz**: Agregar libros por voz (opcional)
-- ✅ **Diseño responsive**: Funciona en móviles y desktop
-- ✅ **Manejo de errores**: Mensajes claros y error boundaries
+- **Autenticación de Usuarios**: Registro e inicio de sesión seguro con JWT.
+- **Gestión de Libros**: Agrega, edita, elimina y cambia el estado de tus libros (leído/por leer).
+- **Búsqueda y Filtrado**: Busca libros por título o autor, y filtra por estado.
+- **Estadísticas de Biblioteca**: Visualiza un dashboard con el total de libros, leídos, por leer y tu progreso.
+- **Reconocimiento de Voz**: Agrega libros usando tu voz (solo título).
+- **Diseño Responsivo**: Adaptado para dispositivos móviles y de escritorio.
+- **Manejo de Errores**: Interfaz amigable para errores de conexión o validación.
 
-### Backend (Node.js + Express + MongoDB)
-- ✅ **API RESTful**: Endpoints organizados y documentados
-- ✅ **Autenticación JWT**: Tokens seguros para sesiones
-- ✅ **Base de datos MongoDB**: Modelos para usuarios y libros
-- ✅ **Validación de datos**: Entrada validada en todas las rutas
-- ✅ **Rutas protegidas**: Middleware de autenticación
-- ✅ **Manejo de errores**: Respuestas consistentes
-- ✅ **Seguridad**: Hashing de contraseñas y validaciones
+## 💻 Tecnologías Utilizadas
 
-## 🛠️ Tecnologías Utilizadas
+- **React**: Biblioteca para construir interfaces de usuario.
+- **Vite**: Herramienta de construcción rápida para proyectos web.
+- **React Router DOM**: Para la navegación en la aplicación.
+- **Context API**: Para la gestión del estado de autenticación.
+- **Web Speech API**: Para la funcionalidad de reconocimiento de voz.
+- **CSS Puro**: Para los estilos de la aplicación.
 
-### Frontend
-- **React 18** - Biblioteca de UI
-- **Vite** - Build tool y dev server
-- **React Router** - Navegación y rutas
-- **Context API** - Manejo de estado global
-- **Boxicons** - Iconografía
-- **CSS3** - Estilos con gradientes y animaciones
+## 📋 Requisitos Previos
 
-### Backend
-- **Node.js** - Runtime de JavaScript
-- **Express.js** - Framework web
-- **MongoDB** - Base de datos NoSQL
-- **Mongoose** - ODM para MongoDB
-- **JWT** - JSON Web Tokens para autenticación
-- **bcrypt** - Hashing de contraseñas
-- **cors** - Cross-Origin Resource Sharing
-
-## 📦 Instalación y Configuración
-
-### Prerrequisitos
-- Node.js (v16 o superior)
-- MongoDB (local o MongoDB Atlas)
+- Node.js (v18 o superior)
 - npm o yarn
+- El backend de la aplicación debe estar corriendo (localmente o desplegado).
 
-### 1. Clonar el repositorio
-\`\`\`bash
-git clone <url-del-repositorio>
-cd biblioteca-personal
-\`\`\`
+## 🛠️ Instalación (Desarrollo Local)
 
-### 2. Configurar el Backend
+1. **Clonar el repositorio**
+   ```bash
+   git clone https://github.com/MauriDarwoft/biblioteca-personal-frontend.git
+   cd biblioteca-personal-frontend
+   ```
 
-\`\`\`bash
-cd backend
-npm install
-\`\`\`
+2. **Instalar dependencias**
+   ```bash
+   npm install
+   ```
 
-Crear archivo \`.env\` en la carpeta backend:
-\`\`\`env
-PORT=2222
-MONGODB_URI=mongodb://localhost:27017/biblioteca
-JWT_SECRET=tu_jwt_secret_muy_seguro
-NODE_ENV=development
-\`\`\`
+3. **Configurar variables de entorno**
+   ```bash
+   cp .env.example .env
+   ```
+   
+   Edita el archivo `.env` para apuntar a tu backend. Si estás usando el backend desplegado en Render.com, tu `.env` debería verse así:
+   ```env
+   VITE_BASE_API_URL=https://biblioteca-personal-backend.onrender.com/api
+   VITE_NODE_DEV=production
+   ```
+   
+   Si estás corriendo el backend localmente, usa:
+   ```env
+   VITE_BASE_API_URL=http://localhost:2222/api
+   VITE_NODE_DEV=development
+   ```
 
-Iniciar el servidor:
-\`\`\`bash
-npm run dev
-\`\`\`
+4. **Iniciar el servidor de desarrollo**
+   ```bash
+   npm run dev
+   ```
+   La aplicación se abrirá en `http://localhost:5173`.
 
-### 3. Configurar el Frontend
+## 🌐 Despliegue
 
-\`\`\`bash
-cd frontend
-npm install
-\`\`\`
+Este frontend está desplegado en [Vercel](https://vercel.com/).
 
-Crear archivo \`.env\` en la carpeta frontend:
-\`\`\`env
-VITE_NODE_DEV=development
-VITE_BASE_API_URL=http://localhost:2222/api
-\`\`\`
+**URL del Frontend Desplegado:** [https://biblioteca-personal-frontend.vercel.app](https://biblioteca-personal-frontend.vercel.app)
 
-Iniciar la aplicación:
-\`\`\`bash
-npm run dev
-\`\`\`
+### Configuración en Vercel
 
-## 🔗 Endpoints de la API
+Para desplegar en Vercel, asegúrate de configurar las siguientes variables de entorno en tu proyecto:
 
-### Autenticación
-- \`POST /api/auth/register\` - Registrar usuario
-- \`POST /api/auth/login\` - Iniciar sesión
-- \`PATCH /api/auth/profile\` - Actualizar perfil
-- \`PATCH /api/auth/change-password\` - Cambiar contraseña
+- `VITE_BASE_API_URL`: La URL de tu backend desplegado (ej. `https://biblioteca-personal-backend.onrender.com/api`).
+- `VITE_NODE_DEV`: `production`
 
-### Libros (Rutas Protegidas)
-- \`GET /api/books\` - Obtener libros del usuario
-- \`POST /api/books\` - Crear nuevo libro
-- \`PATCH /api/books/:id\` - Actualizar libro
-- \`DELETE /api/books/:id\` - Eliminar libro
+## 📖 Uso de la Aplicación
 
-## 📱 Uso de la Aplicación
+1.  **Registro**: Crea una nueva cuenta en la página de registro.
+2.  **Inicio de Sesión**: Inicia sesión con tus credenciales.
+3.  **Biblioteca**: Una vez dentro, podrás ver tus libros, agregar nuevos, editarlos, eliminarlos o cambiar su estado.
+4.  **Dashboard**: Accede al dashboard para ver estadísticas de tu colección.
+5.  **Configuración**: Gestiona tu perfil de usuario.
 
-### 1. Registro y Login
-1. Accede a la aplicación
-2. Regístrate con email y contraseña
-3. Inicia sesión para acceder a tu biblioteca
+## 🏗️ Estructura del Proyecto
 
-### 2. Gestión de Libros
-1. **Agregar**: Usa el formulario o reconocimiento de voz
-2. **Filtrar**: Por estado (todos, leídos, por leer)
-3. **Buscar**: Por título o autor
-4. **Editar**: Haz clic en el ícono de edición
-5. **Cambiar estado**: Marca como leído/por leer
-6. **Eliminar**: Confirma la eliminación
+```
+frontend/
+├── public/
+│   └── icon.png
+├── src/
+│   ├── assets/
+│   │   └── react.svg
+│   ├── components/
+│   │   ├── BookForm.jsx
+│   │   ├── BookItem.tsx
+│   │   ├── BookList.tsx
+│   │   ├── Boton.jsx
+│   │   ├── ErrorBoundary.jsx
+│   │   ├── Layout.jsx
+│   │   ├── LoadingSpinner.tsx
+│   │   ├── Nombre.jsx
+│   │   ├── PrivateRoute.jsx
+│   │   └── ProtectedRoute.tsx
+│   ├── context/
+│   │   └── authContext.jsx
+│   ├── hooks/
+│   │   └── useBooks.js
+│   ├── pages/
+│   │   ├── Ajustes.jsx
+│   │   ├── Dashboard.jsx
+│   │   ├── Home.jsx
+│   │   ├── Login.jsx
+│   │   ├── Register.jsx
+│   │   └── Settings.jsx
+│   ├── router/
+│   │   └── RouterApp.jsx
+│   ├── services/
+│   │   └── api.js
+│   ├── App.jsx
+│   ├── index.css
+│   └── main.jsx
+├── .env.example
+├── eslint.config.js
+├── index.html
+├── package.json
+├── vite.config.js
+└── README.md
+```
 
-### 3. Dashboard
-- Ve estadísticas de tu biblioteca
-- Progreso de lectura
-- Métricas generales
+## 🤝 Contribuir
 
-### 4. Configuración
-- Edita tu perfil (nombre, email)
-- Cambia tu contraseña
-- Ve estadísticas de cuenta
-
-## 🔒 Seguridad
-
-- **Contraseñas hasheadas** con bcrypt
-- **Tokens JWT** para autenticación
-- **Rutas protegidas** con middleware
-- **Validación de entrada** en frontend y backend
-- **Manejo seguro de errores**
-
-## 🎨 Características de UI/UX
-
-- **Diseño moderno** con gradientes y glassmorphism
-- **Animaciones suaves** y transiciones
-- **Responsive design** para todos los dispositivos
-- **Estados de carga** y feedback visual
-- **Manejo de errores** con mensajes claros
-- **Accesibilidad** con iconos y labels
-
-## 🚀 Despliegue
-
-### Frontend (Vercel/Netlify)
-1. Build del proyecto: \`npm run build\`
-2. Subir carpeta \`dist\` al servicio
-3. Configurar variables de entorno
-
-### Backend (Railway/Heroku)
-1. Configurar variables de entorno
-2. Conectar a MongoDB Atlas
-3. Desplegar desde repositorio
-
-## 🤝 Contribución
-
-1. Fork del proyecto
-2. Crear rama feature: \`git checkout -b feature/nueva-funcionalidad\`
-3. Commit cambios: \`git commit -m 'Agregar nueva funcionalidad'\`
-4. Push a la rama: \`git push origin feature/nueva-funcionalidad\`
-5. Crear Pull Request
+1. Fork el proyecto
+2. Crea una rama para tu feature (`git checkout -b feature/AmazingFeature`)
+3. Commit tus cambios (`git commit -m 'Add some AmazingFeature'`)
+4. Push a la rama (`git push origin feature/AmazingFeature`)
+5. Abre un Pull Request
 
 ## 📄 Licencia
 
-Este proyecto está bajo la Licencia MIT. Ver el archivo \`LICENSE\` para más detalles.
-
-## 👨‍💻 Autor
-
-Desarrollado con ❤️ para la gestión de bibliotecas personales.
-
----
+Este proyecto está bajo la Licencia MIT - ver el archivo [LICENSE](LICENSE) para detalles.
 
 ¿Tienes preguntas o sugerencias? ¡Abre un issue o contacta al desarrollador!
