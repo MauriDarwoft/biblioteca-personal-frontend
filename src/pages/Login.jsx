@@ -15,7 +15,7 @@ const Login = () => {
   const location = useLocation()
 
   // Redirect to intended page after login
-  const from = location.state?.from?.pathname || "/dashboard"
+  const from = location.state?.from?.pathname || "/"
 
   const handleSubmit = async (e) => {
     e.preventDefault()
